@@ -17,6 +17,13 @@ LOCAL_SRC_FILES:= \
 
 LOCAL_CFLAGS:= -DLOG_TAG=\"SensorService\"
 
+ifneq ($(filter p990 p999 p970, $(TARGET_BOOTLOADER_BOARD_NAME)),)
+    LOCAL_CFLAGS += -DUSE_LGE_ALS_DUMMY
+    ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),p970)
+        LOCAL_CFLAGS += -DUSE_LGE_ALS_OMAP3
+    endif
+endif
+
 LOCAL_SHARED_LIBRARIES := \
 	libcutils \
 	libhardware \
