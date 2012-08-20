@@ -136,7 +136,11 @@ const char* gFS_Header_Uniforms_PointHasBitmap =
 const char* gFS_Uniforms_TextureSampler =
         "uniform sampler2D sampler;\n";
 const char* gFS_Uniforms_ExternalTextureSampler =
+#ifdef MISSING_EGL_EXTERNAL_IMAGE
+        "uniform sampler2D sampler;\n";
+#else
         "uniform samplerExternalOES sampler;\n";
+#endif
 const char* gFS_Uniforms_GradientSampler[3] = {
         // Linear
         "uniform sampler2D gradientSampler;\n",
